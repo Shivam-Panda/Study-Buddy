@@ -1,9 +1,10 @@
+
 import { Field, Int, ObjectType } from "type-graphql";
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()
 @Entity()
-export class User extends BaseEntity {
+export class Classroom extends BaseEntity {
     @Field(() => Int)
     @PrimaryGeneratedColumn()
     id: number;
@@ -14,21 +15,24 @@ export class User extends BaseEntity {
 
     @Field(() => Int)
     @Column("int")
-    age: number;
-
-    @Field(() => String)
-    @Column({ nullable: true })
-    password: string;
-
-    @Field(() => String)
-    @Column({ nullable: true })
-    email: string;
+    teacher: number;
 
     @Field(() => [Int])
-    @Column("simple-array", { nullable: true })
-    sessions: number[];
+    @Column("simple-array", {
+    })
+    students: number[];
 
     @Field(() => [Int])
-    @Column("simple-array", { nullable: true })
+    @Column("simple-array", {
+    })
+    sets: number[];
+
+    @Field(() => [Int])
+    @Column("simple-array", {
+    })
+    forums: number[];
+
+    @Field(() => [Int])
+    @Column("simple-array", {})
     events: number[];
 }

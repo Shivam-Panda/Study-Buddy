@@ -5,8 +5,9 @@ import { DataSource } from 'typeorm'
 import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { buildSchema } from 'type-graphql'
-import { HelloWorldResolver } from './resolvers/HelloWorldResolver';
+import { buildSchema } from 'type-graphql';
+import { UserResolver } from './resolvers/UserResolver';
+import { HelperResolver } from './resolvers/HelperResolver';
 
 const dataSource = new DataSource({
         "type": "sqlite",
@@ -25,7 +26,7 @@ const dataSource = new DataSource({
 
     const server = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [HelloWorldResolver]
+            resolvers: [UserResolver, HelperResolver]
         }),
         context: ({req, res}) => ({req, res}),
     });
